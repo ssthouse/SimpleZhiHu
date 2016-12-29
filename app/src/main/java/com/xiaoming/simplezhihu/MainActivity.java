@@ -1,10 +1,12 @@
 package com.xiaoming.simplezhihu;
 
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.xiaoming.simplezhihu.base.BaseActivity;
 
@@ -40,6 +42,17 @@ public class MainActivity extends BaseActivity {
                 R.string.str_drawer_des_open, R.string.str_drawer_des_close);
         actionBarDrawerToggle.syncState();
         mDrawerLayout.addDrawerListener(actionBarDrawerToggle);
+
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.id_menu_setting:
+                        SettingAty.start(MainActivity.this);
+                }
+                return true;
+            }
+        });
     }
 
     private void initToolbar() {
