@@ -32,7 +32,6 @@ public class JokeListFragment extends BaseFragment {
     @Bind(R.id.id_lv_jokes)
     ListView lvJokes;
 
-    private List<JuheJokeBean.ResultBean> jokeBeanList = new ArrayList<>();
 
     @Override
     public int getContentView() {
@@ -82,6 +81,9 @@ public class JokeListFragment extends BaseFragment {
         }
     }
 
+
+    private List<JuheJokeBean.ResultBean> jokeBeanList = new ArrayList<>();
+
     private BaseAdapter jokeAdapter = new BaseAdapter() {
         @Override
         public int getCount() {
@@ -120,5 +122,4 @@ public class JokeListFragment extends BaseFragment {
         TextView tvTitle;
         TextView tvContent;
     }
-
 }
