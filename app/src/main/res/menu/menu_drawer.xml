@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/id_menu_main"
+            android:checked="true"
+            android:title="Time" />
+
+        <item
+            android:id="@+id/id_menu_note_into"
+            android:title="FastNote" />
+
+        <item
+            android:id="@+id/id_menu_joke"
+            android:title="For fun" />
+
+        <item
+            android:id="@+id/id_menu_leave_msg"
+            android:title="Leave msg" />
+
+        <item
+            android:id="@+id/id_menu_fist_impression"
+            android:title="Setting">
+            <menu>
+                <item
+                    android:id="@+id/id_menu_setting"
+                    android:title="设置" />
+            </menu>
+        </item>
+    </group>
+</menu>

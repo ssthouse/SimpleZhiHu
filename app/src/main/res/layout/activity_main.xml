@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.xiaoming.simplezhihu.MainActivity">
 
+
     <include layout="@layout/toolbar" />
 
-    <LinearLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/id_drawer_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/id_fragment_container"
-        android:orientation="horizontal" />
+        tools:context=".main.MainActivity">
+
+
+        <LinearLayout
+            android:id="@+id/id_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/id_navigation"
+            app:headerLayout="@layout/drawer_header"
+            app:menu="@menu/menu_drawer"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start" />
+
+    </android.support.v4.widget.DrawerLayout>
+
+
 </LinearLayout>
