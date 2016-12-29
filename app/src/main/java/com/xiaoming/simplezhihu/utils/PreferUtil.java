@@ -19,6 +19,9 @@ public class PreferUtil {
     private static final String KEY_LAST_SIGN_TIME_IN_MILLIS = "lastSignTimeInMillis";
     private static final String KEY_SHARE_FAST_NOTE = "uploadFastNote";
 
+    private static final String KEY_USER_NAME = "userName";
+    private static final String KEY_JOKE_NUM = "jokeNum";
+
     public static PreferUtil getInstance(Activity context) {
         if (mInstance == null)
             mInstance = new PreferUtil(context);
@@ -75,6 +78,28 @@ public class PreferUtil {
         setBoolean(KEY_SHARE_FAST_NOTE, isShare);
     }
 
+    /**********************
+     * username
+     ***********************/
+    public void setUsername(String username) {
+        setString(KEY_USER_NAME, username);
+    }
+
+    public String getUsername() {
+        return getString(KEY_USER_NAME, "username");
+    }
+
+    /******************
+     * joke num
+     ******************************/
+    public void setJokeNum(int jokeNum) {
+        setInteger(KEY_JOKE_NUM, jokeNum);
+    }
+
+    public int getJokeNum() {
+        return getInt(KEY_JOKE_NUM, 10);
+    }
+
     /************************
      * base function
      ********************************/
@@ -102,4 +127,15 @@ public class PreferUtil {
                 .apply();
     }
 
+    public void setInteger(String keyStr, int value) {
+        SharedPreferences.Editor editor = mContext.getSharedPreferences(PREFER_FILE_NAME, Context.MODE_PRIVATE)
+                .edit();
+        editor.putInt(keyStr, value)
+                .apply();
+    }
+
+    public int getInt(String keyStr, int defaultValue) {
+        return mContext.getSharedPreferences(PREFER_FILE_NAME, Context.MODE_PRIVATE)
+                .getInt(keyStr, defaultValue);
+    }
 }

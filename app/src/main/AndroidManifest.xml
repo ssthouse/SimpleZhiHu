@@ -32,6 +32,9 @@
         <activity
             android:name=".zhihu.ZhiHuDetailAty"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".SettingAty"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
