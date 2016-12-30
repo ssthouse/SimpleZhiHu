@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.xiaoming.simplezhihu.base.BaseActivity;
+import com.xiaoming.simplezhihu.bean.SettingChangeEvent;
 import com.xiaoming.simplezhihu.utils.PreferUtil;
 
 import butterknife.Bind;
@@ -18,6 +19,16 @@ import butterknife.Bind;
  */
 
 public class SettingAty extends BaseActivity {
+
+    interface SettingChangeCallback {
+        void settingChangeCallback(SettingChangeEvent event);
+    }
+
+    private static SettingChangeCallback mCallback;
+
+    public static void setCallback(SettingChangeCallback callback) {
+        mCallback = callback;
+    }
 
     @Bind(R.id.id_tb)
     Toolbar mTb;
@@ -65,7 +76,7 @@ public class SettingAty extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.id_menu_save:
-                //TODO save data close
+                //save changes of setting
                 String username = mEtName.getText().toString();
                 int selectIndex = mSpJokeNum.getSelectedItemPosition();
                 int jokeNum = selectIndex == 0 ? 10
@@ -73,6 +84,9 @@ public class SettingAty extends BaseActivity {
                         : selectIndex == 2 ? 20 : 20;
                 PreferUtil.getInstance(this).setUsername(username);
                 PreferUtil.getInstance(this).setJokeNum(jokeNum);
+                //post setting event
+                if (mCallback != null)
+                    mCallback.settingChangeCallback(new SettingChangeEvent(username, jokeNum));
                 finish();
         }
         return super.onOptionsItemSelected(item);
